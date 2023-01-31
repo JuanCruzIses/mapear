@@ -1,0 +1,103 @@
+main{
+    background-image: linear-gradient(to bottom, #054099, #2153aa, #3567bb, #487bcc, #5b8fdd);
+    color: white;
+    height: 100%;
+}
+
+.container-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em 0;
+}
+
+.container-buttons button{
+    background: black;
+    color: white;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.container-logout-button{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10%;
+}
+
+.logout-button{
+    background: white;
+    color: black;
+    font-size: 1.2em;
+    margin: auto;
+}
+
+.logout-button a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+}
+
+.form-edit-profile{
+    text-align: center;
+    position: relative;
+    box-shadow: 5px 5px 20px 2px rgb(0 0 0 / 66%);
+    height: 28vh;
+    padding: 10px;
+    display: none;
+    background-color: white;
+    color: black;
+}
+
+.form-edit-password{
+    text-align: center;
+    position: relative;
+    box-shadow: 5px 5px 20px 2px rgb(0 0 0 / 66%);
+    height: 28vh;
+    padding: 10px;
+    display: none;
+    background-color: white;
+    color: black;
+}
+
+.container-li{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    margin: 15px 20px 5px;
+}
+
+.form-items{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 10px;
+}
+
+.form-items input{
+    margin: 5px auto;
+    width: 50%;
+}
+
+.x-buttonProfile{
+    position: absolute;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 1.5em;
+}
+
+.x-buttonPassword{
+    position: absolute;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 1.5em;
+}
+
+.tapbar-menu ul li .home{
+    color: black;
+}
+
+.tapbar-menu ul li .profile{
+    color: #3cc2ee;
+}

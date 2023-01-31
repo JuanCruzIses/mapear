@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/index.css">
+    <link rel="stylesheet" type="text/css" link href="/css/slider.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <%- include('./partials/header.ejs') %> 
+    <main>
+        <% if(locals.isLogged){%>
+            <h1 id="<%=locals.usuarioLogeado.usuarioId%>" class="welcome-banner">Bienvenido <%=locals.usuarioLogeado.usuarioNombre %></h1>    
+        <% } else { %>
+        <h1 class="welcome-banner">Bienvenido Usuario</h1>
+        <% } %>
+        
+        <div class="subtitle">
+            <h4>Elegi tu proximo destino</h4>
+            <p>Desconectate y disfruta el momento</p>
+        </div>
+        <div class="slider">
+            <ul class="slides">
+                <% for(let i = 0; i < 6; i++){ %>
+                    <li class="container-img<%= i %>"><img src="/images/slider/provincia<%= i %>.jpg" id="imagen<%= i %>" /><span></span></li>
+                <% } %>
+            </ul>
+            <div class="buttons">
+                <div class="next">&#10095;</div>
+                <div class="prev">&#10094;</div>
+            </div>
+        </div> 
+        <div class="container-cards">
+            <h4>Lugares destacados</h4>
+            <% provincias.forEach(provincia =>{ %>
+                <% if(provincia.provinciaId < 6){ %>
+                    <%- include('./partials/indexCards', {provincia}) %> 
+                <% } %>
+            <% }); %>
+        </div>
+    </main>
+    <%- include('./partials/tabBar') %> 
+
+    <script src="/js/index.js"></script>
+</body>
+</html>

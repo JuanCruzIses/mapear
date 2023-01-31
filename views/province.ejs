@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2? familia=Roboto:wght@100;300;400&display=swap');
+    </style>
+    <link rel="stylesheet" type="text/css" link href="/css/index.css">
+    <link rel="stylesheet" type="text/css" link href="/css/slider.css">
+    <link rel="stylesheet" type="text/css" link href="/css/provinceDetail.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <main> 
+        <section class="container-province">
+            <div class="top-header-province">
+                <a class="back-button" href="/home"><i class="fa-solid fa-chevron-left"></i></a>
+                <h1><%=provincia.provinciaNombre%></h1>
+            </div>
+            <div class="container-province-img">
+                <img src="/images/provincias/<%=provincia.provinciaImagen%>">
+            </div>
+            <div class="header-container-text">
+                <button class="mapa">
+                    <p><i class="fa-solid fa-location-dot"></i> Ver mapa</p>
+                </button>
+            </div>
+            <p class="province-description"><%=provincia.provinciaDescripcion%></p>
+        </section>
+        <div class="container-slider">
+            <h3>Cosas para hacer</h3>
+            <p>Lugares para ver y recorrer, experiencias destacadas y mas</p>
+            
+            <div class="slider">
+                <ul class="container-province-cards">
+                    <% lugares.forEach(lugar =>{ %>
+                        <li class="container-cards">
+                            <img src="/images/lugares/<%= lugar.dataValues.actividadImagen %>">
+                            <h5><%= lugar.dataValues.actividadNombre %></h5>
+                        </li>
+                    <% }) %>
+                </ul>
+                <div class="buttons">
+                    <div class="next"><i class="fa-solid fa-circle-arrow-right"></i></div>
+                    <div class="prev"><i class="fa-solid fa-circle-arrow-left"></i></div>
+                </div>
+            </div>
+    </main>
+    <%- include('./partials/tabBar') %> 
+
+    <script src="/js/slider.js"></script>
+    <script src="/js/descriptionProvince.js"></script>
+</body>
+</html>

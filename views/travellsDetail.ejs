@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/travells.css">
+    <link rel="stylesheet" type="text/css" link href="/css/travellDetail.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <main>
+        <section class="travell-header">
+            <div class="travell-headerUp">
+                <a id="left-arrow-travellDetail" href="/travell">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <h4>Itinerario</h4>
+                <div class="container-buttons-header">
+                    <button class="buttonAddUser"><i class="fa-solid fa-user-plus"></i></button>
+                    <button class="editTravell">
+                        <i class="fa-solid fa-pencil">
+                            <a class="edit-travell-button" href="/travell/edit/<%=viajeCreado.viajeId%>"></a>
+                        </i>
+                        </button>
+                </div>
+            </div>
+            <div class="travell-headerMiddle">
+                <img src="/images/provincias/<%=provincia[viajeCreado.viajeProvinciaId].provinciaImagen%>">
+            </div>
+            <div class="travell-headerDown">
+                <h6><%= viajeCreado.viajeNombre%></h6>
+            </div>
+        </section>
+        <% if(msgUserAddFailed != undefined){ %>
+            <p class="addUser-error"><%= msgUserAddFailed %></p>
+        <% } %>
+        <% if(msgUserAddSucces != undefined){ %>
+            <p class="addUser-succes"><%= msgUserAddSucces %></p>
+        <% } %>
+        <section class="travell-container">
+            <div class="head-travell-container">
+                <div class="container-dates">
+                    <h7><%= provincia.provinciaNombre %></h7>
+                    <p>
+                        <%= fechaInicio %> / <%= fechaFinal %>
+                    </p>
+                </div>
+                <a href="/travell/itinerario/<%=idDeViaje%>/contador">
+                <button>
+                    <i class="fa-solid fa-calculator"></i>
+                </button>
+                </a>
+            </div>
+            <div class="body-travell-container">
+                <ul>
+                    <% for(let i = 1; i <= viajeCreado.viajeCantidadDias; i++){ %>
+                    <li class="<%=i%>">
+                        <p class="p-day">Dia <%= i %></p>
+                        <% if(arrayActividades.length){ %>
+                            <% arrayActividades.forEach(actividad =>{ %>
+                                <% if(actividad.actividadDia == i){ %>
+                                    <div class="container-option">
+                                        <p class="detailActivity <%=i%>">- <%= actividad.actividadNombre %></p>
+                                        <button id="<%=actividad.actividadId%>" class="delete-activity-button <%=i%>"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                    <% } %>
+                                    <% }) %>
+                                    <p class="msg-notMoreActivities"></p>
+                        <% } %>
+                        <button class="add-activity-button"><i class="fa-solid fa-plus "></i>Agregar</button>
+                        <button class="right-arrow <%=i%>"><i class="fa-solid fa-angle-right "></i></button>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </section>    
+    </main>
+
+    <form class="form-add-activity" method="post" action="/travell/itinerario/<%=viajeCreado.viajeId%>">
+        <button class="x-button">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+        <p>Seleccione una actividad</p>
+        <input class="input-numberDay" name="numberDay" type="number" style="display: none;">
+        <select class="insput-activity" id="input-activity" name="activityEvent" required>
+            <option disabled selected ></option>
+            <% actividadesEnProvincia.forEach(actividad =>{  %>
+            <option name="<%=actividad.actividadId%>" value="<%=actividad.actividadId%>"><%=actividad.actividadNombre%></option>
+            <% }) %>
+        </select>
+
+        <input class="accept-activity" type="submit">
+    </form>
+
+    <%- include('./partials/tabBar') %> 
+    <%- include('./partials/addUsers') %> 
+    <%- include('./partials/deleteActivity') %>
+    <script src="/js/formAddActivity.js"></script>
+</body>
+</html>

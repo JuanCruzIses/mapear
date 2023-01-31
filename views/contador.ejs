@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/contador.css">
+    <link rel="stylesheet" type="text/css" link href="/css/travellDetail.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <main>
+        <section class="travell-header">
+            <div class="travell-headerUp">
+                <a href="/travell/itinerario/<%=idDeViaje%>">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <h4 class="h4-id" id="<%=idDeViaje%>">Contador</h4>
+            </div>
+        </section>
+        <section class="contador-main">
+        
+       <%  if(!arrayGastos.length){ %>
+            <p class="add-spent">Aun no hay gastos cargados</p>
+        <% } %>
+        <% let numeroVariable = 0 %>
+
+        
+        <% arrayGastos.forEach(gasto =>{ %>
+            <div class="modal-gastos">
+                <p><%= gasto.gastoNombre %></p>
+                <button class="button-money"><i class="fa-solid fa-dollar-sign"></i></button>
+                <p class="p-cost">$<%= gasto.gastoPrecio %></p>
+                <button class="button-detail" id="button-detail"><i class="fa-solid fa-angle-right"></i></i></button>
+            </div>
+            <% }) %>
+            <button id="button-add-travell" class="button-add-travell">
+                <i class="fa-solid fa-circle-plus"></i>
+            </button>
+        </section>
+    </main>
+
+    <form method="post" action="/travell/itinerario/<%=idDeViaje%>/contador" class="form-spent">
+        <h4>Agregar gasto</h4>
+        <button class="x-button">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+        <div class="div-form-spent">
+            <label for="name-spent" class="label-form-spent">Nombre del gasto:</label>
+            <input type="text" name="nameSpent" class="input-form-spent" id="input-name-spent">
+        </div>
+        <div class="div-form-spent">
+            <label for="detail-spent" class="label-form-spent">Detalle:</label>
+            <input type="text" name="detailSpent" class="input-form-spent" id="input-detail-spent">
+        </div>
+        <div class="div-form-spent">
+            <label for="detail-spent" class="label-form-spent">Importe:</label>
+            <input type="number" name="quantitySpent" class="input-form-spent" id="input-import-spent">
+        </div>
+        <button class="save-button">Guardar</button>
+    </form>
+
+    <%- include('./partials/modalDetailContador') %>
+    <%- include('./partials/tabBar') %> 
+    
+    <script src="/js/contador.js"></script>
+</body>
+</html>

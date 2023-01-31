@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" link href="/css/header.css">
+        <link rel="stylesheet" type="text/css" link href="/css/login.css">
+        <title>mapeAR</title>
+    </head>
+    <body>
+        <main>
+            <div class="container-image-header">
+                <img src="../images/background-login2.jpg">
+            </div>
+            <div class="logo-container">
+                <img id="logo" src="/images/logo.jpg" alt="logo">            
+            </div>
+            <div class="container-form-login">
+                <h1 class="form-title">¡Hola!</h1>
+                <h3 class="form-subtitle">Ingresar a la cuenta</h3>
+
+                <form class="form-login" method="post" action="/">
+                    <ul class="form-list">
+                        <% if(errores){ %>
+                            <p class="mensaje-error"> <%= errores%> </p>
+                        <% } %> 
+                        <li class="form-items">
+                            <label for="userLogin" class="user-login">Email</label>
+                            <input type="text" name="userLogin" id="userLogin" class="userLogin" placeholder="Dirección de correo electrónico">
+                        </li>
+                        <li class="form-items">
+                            <label for="passwordLogin" class="password-login">Contraseña</label>
+                            <input type="password" name="passwordLogin" id="passwordLogin" class="passwordLogin" placeholder="Contraseña">
+                        </li>
+                        <a href="" class="link">¿Olvidaste tu contraseña?</a>
+                        
+                        <div class="container-icons-redes">
+                            <button class="buttons-redes">
+                                <i class="fa-brands fa-facebook"></i>
+                            </button>
+                            <button class="buttons-redes">
+                                <i class="fa-brands fa-google"></i>
+                            </button>
+                            <button class="buttons-redes">
+                                <i class="fa-brands fa-apple"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="input-container">
+                            <input type="submit" class="input-submit" value="Iniciar sesión"></input>
+                            <a href="/register" class="link-input-register">
+                                <input type="button" class="input-registerAccount" value="Registrarme"></input>
+                            </a>
+                        </div>
+                    </ul>
+                </form>
+            </div>
+        </main>  
+    </body>
+</html>

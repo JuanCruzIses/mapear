@@ -1,0 +1,278 @@
+main{
+    margin-bottom: 8em;
+}
+.travell-header{
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    margin-bottom: 5%;
+}
+
+.travell-container{
+    padding: 0em 0.8em;
+}
+
+.addUser-error{
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    color: red;
+}
+
+.addUser-succes{
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    color: green;
+}
+
+.travell-headerUp {
+    width: 100%;
+    height: 1.5em;
+    display: flex;
+    font-size: 1.4em;
+    background-color: 003395;
+    color: white;
+    padding: 0;
+}
+
+.travell-headerUp a {
+    flex-grow: 1;
+    padding-left: 0.5em;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    width: auto;
+}
+
+#left-arrow-travellDetail{
+    position: absolute;
+}
+
+.travell-headerUp h4{
+    flex-grow: 2;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.container-buttons-header{
+    position: absolute;
+    right: 0;
+    top: 7;
+    justify-content: flex-end;
+    display: flex;
+    flex-grow: 1;
+}
+
+.container-buttons-header button{
+    border: none;
+    background: none;
+    font-size: 0.8em;
+    color: white;
+    margin: 0 0.1em;
+}
+
+.travell-headerUp a.edit-travell-button{
+    height: 6vh;
+}
+
+.travell-headerMiddle{
+    height: 20vh;
+    width: 100%;
+}
+
+.travell-headerMiddle img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.travell-headerDown{
+    justify-content: center;
+    font-size: 1.8em;
+    align-items: center;
+    height: auto;
+}
+
+.head-travell-container{
+    display: flex;
+    height: auto;
+    align-items: center;
+}
+
+.container-dates{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container-dates p{
+    box-shadow: 0px 0px 5px;
+    width: 80%;
+    margin: 0.2em auto;
+    font-size: 1.1em;
+    border-radius: 10px;
+}
+
+.head-travell-container button{
+    flex-grow: 1;
+    border: none;
+    background: none;
+    font-size: 2em;
+    margin-right: 0.5em;
+}
+
+.body-travell-container{
+    margin-top: 1em;
+}
+
+.body-travell-container ul{
+    list-style: none;
+    padding: 0;
+}
+
+.body-travell-container ul li{
+    margin-bottom: 1.1em;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+    position: relative;
+}
+
+.msg-notMoreActivities{
+    text-align: center;
+    color: red;
+    margin: 0.5em 0 0.2em;
+}
+
+.add-activity-button{
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 3px;
+    margin-top: 0.5em;
+}
+
+.right-arrow{
+    border: none;
+    background: none;
+    font-size: 2em;
+    position: absolute;
+    right: 0px;
+    top: 20%;
+}
+
+.left-arrow{
+    border: none;
+    background: none;
+    font-size: 2em;
+    position: absolute;
+    right: 0px;
+    top: 20%;
+}
+
+/* FORM DELETE ACTIVITY*/
+.form-delete-activity{
+    flex-direction: column;
+    padding: 1em;
+    width: 80%;
+    position: fixed;
+    z-index: 10;
+    height: 25vh;
+    top: 50;
+    bottom: 50;
+    background: white;
+    left: 10vw;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px;
+    display: none;
+}
+
+.form-delete-activity p{
+    margin-bottom: 0.8em;
+}
+
+.activity{
+    width: 100%;
+    padding-left: 1em;
+}
+
+.container-option{
+    width: 100%;
+    position: relative;
+    margin-top: 0.3em;
+}
+
+.container-option button{
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1em;
+    top: 0;
+    right: 100;
+    display: none;
+}
+/* FORM DELETE ACTIVITY*/
+
+.form-add-activity{
+    flex-direction: column;
+    padding: 1em;
+    width: 80%;
+    position: fixed;
+    z-index: 10;
+    height: 25vh;
+    top: 50;
+    bottom: 50;
+    left: 20;
+    right: 20;
+    margin: auto;
+    background: white;
+    text-align: center;
+    align-items: center;
+    display: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px;
+    justify-content: space-evenly;
+}
+
+.form-add-activity button.x-button{
+    right: 3%;
+    top: 3%;
+}
+
+.form-add-activity input{
+    margin-top: 0.5em;
+}
+
+.form-add-activity p{
+    font-size: 1.2em;
+    margin: 0.5em 0 0;
+}
+
+.form-add-activity select{
+    width: 60%;
+    text-align: center;
+}
+
+.arrow-left{
+    border: none;
+    background: none;
+    font-size: 2em;
+    position: absolute;
+    right: 0px;
+    top: 50;
+    bottom: 50;
+}
+
+/*----FORM ADD USERS -----*/
+.container-inputs-addUsers{
+    top: 10px;
+    margin-top: 1.2em;
+}
+
+#addUser{
+    margin-top: 0.5em;
+}

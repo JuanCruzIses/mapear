@@ -1,0 +1,127 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+h1.welcome-banner{
+    text-align: center;
+    background-color: 003395;
+    color: white;
+    font-size: x-large;
+}
+
+/* SLIDER */
+div.container-slider{
+    height: 25%;
+}
+
+.subtitle {
+    margin-top: 15px;
+    margin-left: 7px;
+}
+
+.subtitle h4{
+    font-size: 1.3em;
+}
+
+.subtitle p{
+    font-size: 1.1em;
+    margin-top: 1px;
+}
+
+div.slider{
+    margin-top: 5px;
+    height: 25vh;
+}
+
+div.slide img{
+    height: 200px;
+    width: 100%;
+}
+/* SLIDER */
+
+.tapbar-menu ul{
+    align-items: center;
+    padding: 0px;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    background-color: white;
+    border-top: 1px solid black;
+    height: 9vh;
+}
+
+.tapbar-menu ul li a{
+    text-decoration: none;
+    color: black;
+    margin: auto 0;
+    display: flex;
+    font-size: 1.2em;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Main - Container Cards */
+div.container-cards{
+    margin: 15px 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+div.card-container{
+    position: relative;
+    text-align: center;
+    margin: 10px 0px 0px;
+    width: 45%;
+}
+
+div.card-container button{
+    font-size: 1.3em;
+    position: absolute;
+    background: none;
+    border: none;
+    top: 5px;
+    right: 5px;
+}
+
+div.container-cards h4{
+        width: 100%;
+        padding-left: 3%;
+        font-size: 1.2em;
+}
+
+div.card-container a{
+    text-decoration: none;
+    color: black;
+}
+
+#provincia-image{
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
+
+div.card-text{
+    text-align: left;
+    font-size: 12px;        
+    position: relative;
+    top: -18px;
+    background-color: rgb(249 249 249 / 74%);
+    height: 1.5em;
+    padding-left: 2.5px;
+}
+
+div.card-text h5{
+    font-size: 1.5em;
+}
+
+.tapbar-menu ul li .home{
+    color: #3cc2ee;
+}

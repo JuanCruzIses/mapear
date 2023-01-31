@@ -1,0 +1,10 @@
+<form class="form-delete-activity" id="form-deleteActivity" action="/travell/itinerario/<%=viajeCreado.viajeId%>?_method=DELETE" method="post">
+    <button class="x-button" id="x-button-deleteActivity">
+            <i class="fa-solid fa-circle-xmark"></i>
+    </button>
+    <div class="container-inputs-addUsers">
+        <p>Desea borrar la actividad de su itinerario de viaje?</p>
+        <input type="number" class="activity-id-delete" name="idActivityDelete" style="display: none;">
+        <input type="submit" class="button-deleteActivity" id="deleteActivity" value="Enviar">
+    </div>
+</form>

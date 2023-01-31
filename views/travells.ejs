@@ -1,0 +1,156 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/travells.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <main>
+        <section class="travell-header">
+            <div class="travell-headerUp">
+                <a href="/home">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <h4>Viajes</h4>
+            </div>
+            <div class="travell-headerDown">
+               <p class="option-futureTravell">Mis viajes</p>
+               <p class="option-madeTravell">Viajes agregado</p>
+            </div>
+        </section>
+        <section class="travells-container">
+            <% if(viajeCreado.length){
+                 viajeCreado.forEach(viaje =>{ %>
+               <div class="card-travell">
+                   <img src="/images/provincias/<%= provincia[viaje.viajeProvinciaId-1].provinciaImagen %>">
+                   <div class="containerText-card-travell">
+                       <h5><%= viaje.viajeNombre%></h5>
+                       <div class="text-card">
+                           <b>Destino:</b>
+                           <p><%= provincia[viaje.viajeProvinciaId-1].provinciaNombre %></p>
+                        </div>
+                        <div class="text-card">
+                            <b>Fecha:</b> 
+                            <p><%= fechaInicio %> / <%= fechaFinal %></p>
+                        </div>
+
+                        <div class="container-edit-button">
+                            <button class="delete-travell-button">ELIMINAR</button>
+                            <a href="/travell/itinerario/<%=viaje.viajeId%>">
+                                <button class="edit-travell-button">EDITAR</button>
+                            </a>
+
+                            <form class="form-delete-travell" action="/travell?_method=DELETE" method="post">
+                                    <button class="x-button-form">
+                                        <i class="fa-solid fa-circle-xmark"></i>
+                                    </button>
+                                   <input type="hidden" name="viajeId" value="<%=viaje.viajeId%>">
+                                   <p>Desea eliminar el evento de viaje?</p>
+                                   <input class="delete-travell-input" type="submit" value="Aceptar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <% }) } else{ %> 
+            <p>Aun no hay eventos de viajes creados</p>
+            <% } %>
+            <button class="button-add-travell">
+                <i class="fa-solid fa-circle-plus"></i>
+                Crear viaje
+            </button>
+        </section>
+
+        <form class="form-createTravell" method="post" action="/travell">
+            <button class="x-button">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            <h4>Crea tu evento de viaje</h4>
+            <input class="input-createTravell" type="text" name="nameEvent" placeholder="Nombre del evento" required>
+
+            <input class="input-createTravell" type="number" name="quantityDaysEvent" placeholder="Cantidad de dias" required>
+
+            <select class="input-dateTravell" id="input-dateTravell" name="destinyEvent" required>
+                    <option disabled selected >Seleccione destino</option>
+                    <option value="1">Buenos Aires</option>
+                    <!-- <option value="1">Ciudad Autónoma de Buenos Aires</option>
+                    <option value="2">Catamarca</option>
+                    <option value="3">Chaco</option>
+                    <option value="4">Chubut</option>
+                    <option value="5">Córdoba</option>
+                    <option value="6">Corrientes</option>
+                    <option value="7">Entre Rios</option>
+                    <option value="8">Formosa</option>
+                    <option value="9">Jujuy</option>
+                    <option value="10">La pampa</option>
+                    <option value="11">La rioja</option>
+                    <option value="12">Mendoza</option> -->
+                    <option value="4">Misiones</option>
+                    <option value="3">San Carlos de Bariloche</option>
+                    <!-- <option value="15">Río Negro</option>
+                    <option value="16">Salta</option>
+                    <option value="17">San Juan</option>
+                    <option value="18">San Luis</option>
+                    <option value="19">Santa Cruz</option>
+                    <option value="20">Santa Fe</option>
+                    <option value="21">Santiago del Estero</option>
+                    <option value="22">Tierra del fuego</option> -->
+                    <option value="2">Tucumán</option>
+                </select>
+            <div class="dates-travell">
+                <label for="initialDateTravell" class="label-date">Fecha de inicio</label>
+                <label for="finalDateTravell" class="label-date">Fecha de finalizacion</label>
+                <input class="input-dateTravell initialDate-travell" name="initialDateTravell" type="date" required>
+                <input class="input-dateTravell finalDateTravell" name="finalDateTravell" type="date" required>
+            </div>
+            <button class="buttonCreateTravell">Continuar</button>
+        </form>
+
+        <!-- Viajes agregado -->
+        <section class="travellsMade-container">
+            <% if(viajeCreado2.length){ %>
+                <% viajeCreado2.forEach(viaje=>{ %>
+                    <div class="card-travell">
+                        <img src="/images/provincias/<%= provincia[viaje.viajeProvinciaId-1].provinciaImagen %>">
+                        <div class="containerText-card-travell">
+                            <h5><%= viaje.viajeNombre%></h5>
+                            <div class="text-card">
+                                <b>Destino:</b>
+                                <p><%= provincia[viaje.viajeProvinciaId-1].provinciaNombre %></p>
+                             </div>
+                             <div class="text-card">
+                                 <b>Fecha:</b> 
+                                 <p><%= fechaInicio %> / <%= fechaFinal %></p>
+                             </div>
+     
+                             <div class="container-edit-button">
+                                 <button class="delete-travell-button">ELIMINAR</button>
+                                 <a href="/travell/itinerario/<%=viaje.viajeId%>">
+                                     <button class="edit-travell-button">EDITAR</button>
+                                 </a>
+     
+                                 <form class="form-delete-travell" action="/travell?_method=DELETE" method="post">
+                                         <button class="x-button-form">
+                                             <i class="fa-solid fa-circle-xmark"></i>
+                                         </button>
+                                        <input type="hidden" name="viajeId" value="<%=viaje.viajeId%>">
+                                        <p>Desea eliminar el evento de viaje?</p>
+                                        <input class="delete-travell-input" type="submit" value="Aceptar">
+                                 </form>
+                             </div>
+                         </div>
+                     </div>
+                <% }) %>
+            <% }else{ %>
+            <div class="travells-container2">
+                <p class="p-travells-container">Aun no te han agregado a ningun viaje</p>
+                <p class="second-p-travells-container">Para crear los tuyos haz click <a class="a-create-travell">aqui</a></p>
+            </div>
+            <% } %>
+        </section>
+    </main>
+    <%- include('./partials/tabBar') %> 
+    <script src="/js/travell.js"></script>
+</body>
+</html>

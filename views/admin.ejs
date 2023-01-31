@@ -1,0 +1,63 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/index.css">
+    <link rel="stylesheet" type="text/css" link href="/css/admin.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <h1 class="welcome-banner">Administrador</h1>
+        <form action="/admin" method="POST" enctype="multipart/form-data" accept=".jpg, .png" class="form-admin" id="form-admin">	
+            <div class="container-options">
+                <select class="admin-options" id="adminOptions" name="adminOptions">
+                    <option disabled selected >Seleccione una provincia</option>
+                    <option value="1">Buenos Aires</option>
+                    <!-- <option value="1">Ciudad Autónoma de Buenos Aires</option>
+                    <option value="2">Catamarca</option>
+                    <option value="3">Chaco</option>
+                    <option value="4">Chubut</option>
+                    <option value="5">Córdoba</option>
+                    <option value="6">Corrientes</option>
+                    <option value="7">Entre Rios</option>
+                    <option value="8">Formosa</option>
+                    <option value="9">Jujuy</option>
+                    <option value="10">La pampa</option>
+                    <option value="11">La rioja</option>
+                    <option value="12">Mendoza</option> -->
+                    <option value="4">Misiones</option>
+                    <option value="3">San Carlos de Bariloche</option>
+                    <!-- <option value="15">Río Negro</option>
+                    <option value="16">Salta</option>
+                    <option value="17">San Juan</option>
+                    <option value="18">San Luis</option>
+                    <option value="19">Santa Cruz</option>
+                    <option value="20">Santa Fe</option>
+                    <option value="21">Santiago del Estero</option>
+                    <option value="22">Tierra del fuego</option> -->
+                    <option value="2">Tucumán</option>
+                </select>
+            </div>
+            <div class="container-options">
+                <label for="lugarNombre" class="form-label">Nombre del lugar:</label>
+                <input type="text" id="lugarNombre" name="lugarNombre" class="admin-options">
+            </div>  
+            <div class="container-options">
+                <label for="lugarDescripcion" class="form-label">Descripcion del lugar:</label>
+                <textarea name="lugarDescripcion" class="admin-options" id="lugarDescripcion"></textarea>
+            </div>
+            <div class="container-options">
+                <label for="img" class="form-label">Imagen:</label>
+                <input type="file" accept=".jpg, .png" name="img" id="img" class="form-control">
+            </div>
+            <input type="submit" class="input-submit" id="agregar"></input>
+        </form>
+    </main>
+    <%- include('./partials/tabBar') %> 
+
+    <script src="/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/travells.css">
+    <link rel="stylesheet" type="text/css" link href="/css/travellDetail.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <main>
+        <section class="travell-header">
+            <div class="travell-headerUp">
+                <a id="left-arrow-travellDetail" href="/travell/itinerario/<%=viaje.viajeId%>">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <h4><%=viaje.viajeNombre%></h4>
+            </div>
+            <div class="travell-headerMiddle">
+                <form action="-travell/edit/<%=viaje.viajeId%>_?method=put" method="post">
+                    <div class="container-info">
+                        <label></label>
+                        <input>
+                    </div>
+                </form>
+            </div>
+            
+        </section>
+        
+    <%- include('./partials/tabBar') %> 
+    </body>
+</html>

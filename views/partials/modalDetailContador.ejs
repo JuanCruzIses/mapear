@@ -1,0 +1,28 @@
+<div class="container-section-detailSpent">
+<% arrayGastos.forEach(arrayGastos =>{ %>
+    <section class="section-detail-spent">
+        <div class="detail-spent">    
+        <div class= "header-detail-spent">
+            <h5><%= arrayGastos.gastoNombre %></h5>
+            <p class="value-spent"><i class="fa-solid fa-dollar-sign"></i><%= arrayGastos.gastoPrecio %></p>
+        </div>
+        <p class="p-description-detail"><%= arrayGastos.gastoDescripcion %></p>
+    </div>
+    <div class="division-spent">
+        <h6>Division de gastos</h6>
+        <% if(arrayUsuarios.length > 1){ %>
+            <% for(let i = 0; i < arrayUsuarios.length; i++){ %>
+                <div class="division-detail-spent">
+                    <p class="name-person"><%= arrayUsuarios[i].usuarioNombre %></p>
+                    <input class="input-checkBox" type="checkbox">
+                    <i class="fa-solid fa-dollar-sign"></i><p class="value-division">0</p>
+                </div>
+                <% } %>
+        <% } else{ %>
+            <p class="msg-addUsers">Agrega a tus compañeros de viaje para dividir sus gastos</p>
+        <% } %>
+        </div>
+    <button id="button-confirm-detailSpent" class="button-confirm-detailSpent"><i class="fa-solid fa-circle-check"></i></button>
+</section>
+<% }) %>
+</div>

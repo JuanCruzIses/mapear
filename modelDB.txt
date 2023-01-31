@@ -1,0 +1,18 @@
+provincias:
+    provinciaId (PK)
+    provinciaNombre
+    provinciaDescripcion
+    provinciaImagen
+    
+usuarios:
+    usuarioId (PK)
+    usuarioNombre
+    usuarioEmail
+    usuarioContrasenia
+    
+lugares:
+    lugarId (PK) 
+    lugarProvinciaId (FK - provinciaId)    
+    lugarNombre 
+    lugarDescripcion
+    lugarImagen

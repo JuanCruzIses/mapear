@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/index.css">
+    <link rel="stylesheet" type="text/css" link href="/css/profile.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <div>
+            <h3>Cuenta</h3>
+            <p>Nombre de usuario: <%=locals.usuarioLogeado.usuarioNombre %></p>
+            <p>Email: <%=locals.usuarioLogeado.usuarioEmail %></p>
+            <div class="container-buttons">
+                <button class="button-edit-profile">Editar informacion</button>
+                <button class="button-edit-password">Cambiar contraseña</button>
+            </div>
+        </div>
+
+        <form class="form-edit-profile" action="/profile/:id?_method=PUT" method="post">
+            <button class="x-buttonProfile">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            <div class="container-li">
+                <li class="form-items">
+                    <label for="userName" class="user-login">Nuevo nombre de usuario</label>
+                    <input type="text" name="userName" id="userName" class="user-login">
+                </li>
+                <li class="form-items">
+                    <label for="userEmail" class="user-login">Nuevo email</label>
+                    <input type="text" name="userEmail" id="userEmail" class="user-login">
+                </li>
+            </div>
+            <button class="submitForm" type="submit">Aceptar</button>
+        </form>
+
+        <form class="form-edit-password" action="/profile/:id?_method=PUT" method="post">
+            <button class="x-buttonPassword">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            <div class="container-li">
+                <li class="form-items">
+                    <label for="newPassword" class="user-login">Ingrese su nueva contraseña</label>
+                    <input type="password" name="newPassword" id="newPassword" class="user-login">
+                </li>
+                <li class="form-items">
+                    <label for="confirmNewPassword" class="user-login">Confirma contraseña</label>
+                    <input type="text" name="confirmNewPassword" id="confirmNewPassword" class="user-login">
+                </li>
+            </div>
+            <button class="submitForm" type="submit" value="Modificar">Aceptar</button>
+        </form>
+
+        <div class="container-logout-button">
+            <button class="logout-button">
+                <a href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </button>
+        </div>
+    </main>
+    <%- include('./partials/tabBar') %> 
+    <script src="/js/editProfile.js"></script>
+</body>
+</html>

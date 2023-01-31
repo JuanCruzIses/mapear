@@ -1,0 +1,104 @@
+.travell-headerUp{
+    width: 100%;
+    height: 1.5em;
+    display: flex;
+    font-size: 1.4em;
+    background-color: 003395;
+    color: white;
+    padding: 0;
+}
+
+.travell-headerUp h4{
+    align-self: center;
+    margin: 0 auto;
+    font-size: 1.2em;
+}
+
+.travell-headerUp a{
+    flex-grow: 1;
+    padding-left: 0.5em;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    width: 20%;
+    position: absolute;
+    top: 0.25em;
+}
+
+div.container-cards {
+    margin: 0 0 3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.title-list{
+    color: #003357;
+    display: flex;
+    height: 1.5em;
+    padding-top: 3px;
+    background-color: #b0aecd38;
+    margin-bottom: 1.2em;
+}
+
+div.card-container{
+    position: relative;
+    text-align: center;
+    margin: 10px 0px 0px;
+    width: 75%;
+    margin-bottom: 2em;
+    height: 10em;
+    display: none;
+    box-shadow: 0px 0px 5px;
+    border-radius: 10px;
+}
+
+.heart-button{
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 1em;
+}
+
+.provincia-image{
+    height: 100%;
+    width: 100%;
+}
+
+img{
+    object-fit: cover;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.container-cards p{
+    width: 100%;
+    box-shadow: 0px 0px 7px;
+    border-radius: 0px 0px 5px 5px;
+    position: absolute;
+    bottom: 0;
+    background: white;
+}
+
+.container-cards p.msg-noFav{
+    box-shadow: none;
+    margin: 50% auto;
+    width: 80%;
+    background: none;
+    position: initial;
+    color: lightslategray;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.tapbar-menu ul li .home {
+    color: black
+}
+
+.tapbar-menu ul li .favorite {
+    color: #3cc2ee
+}

@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="/css/header.css">
+    <link rel="stylesheet" type="text/css" link href="/css/index.css">
+    <link rel="stylesheet" type="text/css" link href="/css/favorite.css">
+    <title>mapeAR</title>
+</head>
+<body>
+    <main>
+        <section class="travell-header">
+            <div class="travell-headerUp">
+                <a href="/home">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                <h4>Favoritos</h4>
+            </div>
+        </section>
+        <div class="container-cards">
+            <h4 id="<%=locals.usuarioLogeado.usuarioId%>" class="title-list">Lista de <%=locals.usuarioLogeado.usuarioNombre%></h4>
+            <% provincia.forEach(provincia =>{ %> 
+                <div id="<%=provincia.provinciaId%>" class="card-container">
+                    <button><i class="fa-solid fa-heart"></i></button>
+                    <div class="provincia-image">
+                        <a href="/travell/province/<%=provincia.provinciaId%>">
+                            <img src="/images/provincias/<%=provincia.provinciaImagen%>">
+                        </a> 
+                    </div>
+                    <p><%=provincia.provinciaNombre%></p>
+                </div>
+            <% }) %>
+                
+            <p class="msg-noFav">Añadí lugares a tu lista y compartila con quien quieras</p>
+
+        </div>
+       <%- include('./partials/tabBar') %> 
+       <script src="/js/favorite.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://kit.fontawesome.com/56dfe9ea75.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" link href="/css/header.css">
+        <link rel="stylesheet" type="text/css" link href="/css/login.css">
+        <title>mapeAR</title>
+    </head>
+    <body>
+        <main>
+
+            <div class="container-image-header">
+                <img src="../images/background-login2.jpg">
+            </div>
+
+            <div class="logo-container">
+                <img id="logo" src="/images/logo.jpg" alt="logo">            
+            </div>
+
+            <div class="container-form-register">
+                <div class="form-login">
+
+                    <div class="container-header-form">
+                        <i class="fa-regular fa-circle-user"></i>
+                        <h3>Creá tu cuenta</h3>
+                    </div>
+
+                    <form method="post" action="/register">
+                        <ul class="form-list">
+
+                            <div class="container-msg-error">
+                                <% if (locals.errores ){ 
+                                    errores.forEach(error => {%>
+                                        <p class="mensaje-error"> <%= error.msg%> </p>
+                                    <% }) %>
+                                <% } %> 
+                            </div>
+
+                            <li class="form-items">
+                                <label for="userName" class="user-login">Nombre de usuario</label>
+                                <input type="text" name="userName" id="userName" class="user-login" value="<%= locals.old && old.userName %>">
+                            </li>
+                            <li class="form-items">
+                                <label for="userEmail" class="user-login">Email</label>
+                                <input type="text" name="userEmail" id="userEmail" class="user-login" value="<%= locals.old && old.userEmail %>">
+                            </li>
+                            <li class="form-items">
+                                <label for="userPassword" class="password-login">Contraseña</label>
+                                <input type="password" name="userPassword" id="userPassword" class="password-login">
+                            </li>
+                            <li class="form-items">
+                                <label for="confirmUserPassword" class="password-login">Confirma contraseña</label>
+                                <input type="password" name="confirmUserPassword" id="confirmUserPassword" class="password-login">
+                            </li>
+                            <div class="input-container">
+                                <input type="submit" class="input-createAccount" id="input-createAccount" value="Crear cuenta"></input>
+                                <a class="link" href="/">Ya estoy registrado</a>
+                            </div>
+                            
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </body>
+</html>

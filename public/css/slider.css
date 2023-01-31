@@ -1,0 +1,79 @@
+.slider ul li.container-img0{
+    display: block;
+}
+
+.slider {
+    position: relative;
+}
+ 
+.slider ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ 
+.slider ul li{
+    display: none;
+    position: relative;
+    /* height: 18vh; */
+    height: 100%;
+}
+ 
+.slider ul li img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.slider ul li span {
+    position: absolute;
+    bottom: 0;
+    background: hsl(0, 1%, 72%, .1);
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+}
+/* buttons */
+.slider .buttons  {
+    position: absolute;
+    top: 30%;
+    width:  100%;
+}
+.slider .buttons .next {
+    font-size: 1.9rem;
+    color: black;
+    right: 0;
+    position: absolute;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+}    
+.slider .buttons .prev {
+    font-size: 1.9rem;
+    color: black;
+    left: 0;
+    position: absolute;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+}   
+.slider .buttons .next:hover {
+    background: hsl(0, 0%, 25%);
+    color: hsl(0, 0%, 93%);
+}
+.slider .buttons .prev:hover {
+    background: hsl(0, 0%, 25%);
+    color: hsl(0, 0%, 93%);
+}
+ 
+/* slider animation */
+.slider ul li {
+    animation-name: fade;
+    animation-duration: 2.5s;
+}
+  
+@keyframes fade {
+    from {opacity: .2} 
+    to {opacity: 1}
+}

@@ -1,0 +1,20 @@
+.form-admin{
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    margin: 50px auto 0px;
+    background-color: #bac8d23b;
+    box-shadow: 0px 0px 10px 1px;
+    padding: 5px;
+}
+
+.container-options{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.input-submit{
+    width: 30%;
+    margin: 10px auto;
+}
