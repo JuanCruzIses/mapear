@@ -11,7 +11,7 @@ const adminController = {
         return res.render('admin');
     }, 
     create : (req, res) => {
-            db.Actividades.create({
+            db.actividades.create({
                 actividadProvinciaId : req.body.adminOptions ,   
                 actividadNombre : req.body.lugarNombre,
                 actividadDescripcion : req.body.lugarDescripcion ,

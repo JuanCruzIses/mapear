@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Provincia";
+    let alias = "provincias";
 
     let cols = {
         provinciaId: {
@@ -28,7 +28,7 @@ module.exports = (sequelize, dataTypes) => {
 
     };
 
-    const Provincia = sequelize.define(alias, cols, config)
+    const provincias = sequelize.define(alias, cols, config)
 
     // Provincia.associate = function(models){
     //     Provincia.hasMany(models.Lugare, {
@@ -44,6 +44,6 @@ module.exports = (sequelize, dataTypes) => {
     //     })
     // }
 
-    return Provincia
+    return provincias
 }
 

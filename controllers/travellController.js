@@ -11,8 +11,8 @@ const travellController = {
         //         lugarProvinciaId : id
         //     }
         // })
-        let provincias = await db.Provincia.findByPk(req.params.id);
-        await db.Actividades.findAll({
+        let provincias = await db.provincias.findByPk(req.params.id);
+        await db.actividades.findAll({
             where: {
                 actividadProvinciaId: id
             }
@@ -27,7 +27,7 @@ const travellController = {
         let viajeCreado
         let viajeCreado2 = []
 
-        await db.ViajeUsuarios.findAll({
+        await db.viajeusuarios.findAll({
             where: { usuarioId: usuarioId }
         }).then((response) => {
             if (response.length) {
@@ -42,7 +42,7 @@ const travellController = {
         })
         
         console.log(viajeCreado2)
-        await db.Viaje.findAll({
+        await db.viajes.findAll({
             where: { viajeUsuarioId: usuarioId }
         }).then((response) => {
             viajeCreado = Object.values(response)
@@ -63,7 +63,7 @@ const travellController = {
         let usuarioId = res.locals.usuarioLogeado.usuarioId
 
 
-        db.Viaje.create({
+        db.viajes.create({
             viajeProvinciaId: req.body.destinyEvent,
             viajeUsuarioId: usuarioId,
             viajeNombre: req.body.nameEvent,
@@ -77,10 +77,10 @@ const travellController = {
         let viajeId = req.body.viajeId;
 
         Promise.all([
-            db.Gastos.destroy({ where: { viajeId: viajeId } }),
-            db.ViajeUsuarios.destroy({ where: { viajeId: viajeId } }),
-            db.ViajeActividades.destroy({ where: { viajeId: viajeId }}),
-            db.Viaje.destroy({ where: { viajeId: viajeId } })
+            db.gastos.destroy({ where: { viajeId: viajeId } }),
+            db.viajeusuarios.destroy({ where: { viajeId: viajeId } }),
+            db.viajeactividades.destroy({ where: { viajeId: viajeId }}),
+            db.viajes.destroy({ where: { viajeId: viajeId } })
         ]).then(function(){
             res.redirect('/travell')
         })
@@ -91,12 +91,12 @@ const travellController = {
         let provincia = req.session.sessionProvincia;
         let errorAddUserInTheTravel
 
-        let viajeCreado = await db.Viaje.findByPk(idDeViaje)
+        let viajeCreado = await db.viajes.findByPk(idDeViaje)
         let provinciaId = viajeCreado.viajeProvinciaId
-        let actividadesEnProvincia = await db.Actividades.findAll({
+        let actividadesEnProvincia = await db.actividades.findAll({
             where: { actividadProvinciaId: provinciaId }
         })
-        let itinerarioViaje = await db.ViajeActividades.findAll({
+        let itinerarioViaje = await db.viajeactividades.findAll({
             where: { viajeId: idDeViaje }
         })
 
@@ -145,7 +145,7 @@ const travellController = {
     addActivityItinerario: async (req, res) => {
         try {
         let idDeViaje = req.params.id
-        db.ViajeActividades.create({
+        db.viajeactividades.create({
             actividadId: req.body.activityEvent,
             viajeActividadDia: req.body.numberDay,
             viajeId: idDeViaje,
@@ -158,7 +158,7 @@ const travellController = {
     },
     deleteActivityItinerario: async(req, res)=>{
             let idDeViaje = req.params.id
-            db.ViajeActividades.destroy({
+            db.viajeactividades.destroy({
                 where : { viajeActividadId : req.body.idActivityDelete }
             }).then(function(){
                 res.redirect('/travell/itinerario/' + idDeViaje)
@@ -171,27 +171,27 @@ const travellController = {
         let arrayUsuarios = []
         let idDeViaje = req.params.id
 
-        await db.ViajeUsuarios.findAll({ where: { viajeId: idDeViaje } })
+        await db.viajeusuarios.findAll({ where: { viajeId: idDeViaje } })
             .then((response)=>{
                 response.forEach(usuario=>{
                     usuariosFind.push(usuario.usuarioId)
                 })
             })
             
-        await db.Viaje.findOne({ where: { viajeId: idDeViaje } })
+        await db.viajes.findOne({ where: { viajeId: idDeViaje } })
             .then((response) => {
                 usuariosFind.push(response.viajeUsuarioId)
             })
         
         usuariosFind.forEach(element=>{
-            db.Usuario.findByPk(element)
+            db.usuarios.findByPk(element)
             .then((response)=>{
                 arrayUsuarios.push(response.dataValues)
                 console.log(arrayUsuarios)
             })
         })
         
-        let gastos = await db.Gastos.findAll({ where: { viajeId: idDeViaje } })
+        let gastos = await db.gastos.findAll({ where: { viajeId: idDeViaje } })
         let arrayGastos = gastos
 
         res.render('contador', { idDeViaje, usuarioId, arrayGastos, arrayUsuarios })
@@ -201,7 +201,7 @@ const travellController = {
         let usuarioId = res.locals.usuarioLogeado.usuarioId
         let idDeViaje = req.params.id
 
-        db.Gastos.create({
+        db.gastos.create({
             usuarioId: usuarioId,
             gastoNombre: req.body.nameSpent,
             gastoDescripcion: req.body.detailSpent,
@@ -214,12 +214,12 @@ const travellController = {
     },
 
     addUserTravell: async (req, res) => {
-        let userForAdd = await db.Usuario.findOne({
+        let userForAdd = await db.usuarios.findOne({
             where: { usuarioEmail: req.body.userEmail }
         })
 
         let valor
-        let usersInTheTravell = await db.ViajeUsuarios.findAll({
+        let usersInTheTravell = await db.viajeusuarios.findAll({
             where: { viajeId: req.params.id }
         }).then((response) => {
             for (let i = 0; i < response.length; i++) {
@@ -231,7 +231,7 @@ const travellController = {
         if (userForAdd != undefined && (valor != true)) {
             let msg = 'Usuario agregado correctamente';
             res.cookie('userAddedSucces', msg, { maxAge: 2000 })
-            db.ViajeUsuarios.create({
+            db.viajeusuarios.create({
                 viajeId: req.params.id,
                 usuarioId: userForAdd.usuarioId
             })
@@ -256,20 +256,17 @@ const travellController = {
     },
     travellEdit : async (req, res)=>{
         let viaje
-        await db.Viaje.findByPk(req.params.id)
+        await db.viajes.findByPk(req.params.id)
         .then((response)=>{
             viaje = response.dataValues
         })
 
         let viajeUsuarios
-        await db.ViajeUsuarios.findAll({
+        await db.viajeusuarios.findAll({
             where: {viajeId : req.params.id}
         }).then((response)=>{
             viajeUsuarios = response.dataValues
         })
-
-        console.log(viaje)
-        console.log(viajeUsuarios)
         res.render('travellEdit', {viaje, viajeUsuarios})
     }
 }

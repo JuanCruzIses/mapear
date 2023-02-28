@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Viaje";
+    let alias = "viajes";
 
     let cols = {
         viajeId : {
@@ -13,14 +13,14 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             notNull: true,
             references: {
-                model: 'Provincia',
+                model: 'provincias',
                 key: 'provinciaId'}
         },
         viajeUsuarioId : {
             type: dataTypes.INTEGER,
             notNull: true,
             references: {
-                model: 'Usuario',
+                model: 'usuarios',
                 key: 'usuarioId'}
         },
         viajeNombre: {
@@ -48,28 +48,28 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: 'updated_at'
     };
 
-    const Viaje = sequelize.define(alias, cols, config)
+    const viajes = sequelize.define(alias, cols, config)
 
-    Viaje.associate = function(models){
-        Viaje.belongsTo(models.Provincia, {
-            as:'viaje',
+    viajes.associate = function(models){
+        viajes.belongsTo(models.provincias, {
+            as:'viajes',
             foreignKey:"viajeProvinciaId"     
         })
     }
     
-    Viaje.associate = function(models){
-        Viaje.belongsTo(models.Usuario, {
-            as:'viaje',
+    viajes.associate = function(models){
+        viajes.belongsTo(models.usuarios, {
+            as:'viajes',
             foreignKey:"viajeUsuarioId"     
         })
     }
 
-    Viaje.associate = function(models){
-        Viaje.belongsTo(models.ViajeActividades, {
+    viajes.associate = function(models){
+        viajes.belongsTo(models.viajeactividades, {
             as:'viaje',
             foreignKey:"viajeId"     
         })
     }
 
-    return Viaje
+    return viajes
 }

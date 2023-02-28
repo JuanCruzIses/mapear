@@ -7,7 +7,7 @@ const { Op } = require("sequelize");
 
 const indexController = {
     indexVista : async (req, res) => {
-        const provincias = await db.Provincia.findAll()
+        const provincias = await db.provincias.findAll()
             .then(function(provincias){
                 req.session.sessionProvincia = provincias
                 res.render ('index', {provincias});
@@ -16,7 +16,7 @@ const indexController = {
     searchProcess: async (req, res)=>{
         let provinceSearch = req.query.destino
         let provinces = [] 
-        await db.Provincia.findOne({
+        await db.provincias.findOne({
             where : {
                 provinciaNombre : { [Op.like] : '%' + provinceSearch + '%'}
             }

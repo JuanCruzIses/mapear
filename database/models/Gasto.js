@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Gastos";
+    let alias = "gastos";
 
     let cols = {
         gastosId : {
@@ -19,13 +19,13 @@ module.exports = (sequelize, dataTypes) => {
         usuarioId: {
             type: dataTypes.INTEGER,
             references: {
-                model: 'Usuario',
+                model: 'usuarios',
                 key: 'usuarioId'}
         },
         viajeId: {
             type: dataTypes.INTEGER,
             references: {
-                model: 'Viaje',
+                model: 'viajes',
                 key: 'viajeId'}
         },
         
@@ -38,21 +38,21 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: 'updated_at'
     };
 
-    const Gastos = sequelize.define(alias, cols, config)
+    const gastos = sequelize.define(alias, cols, config)
 
-    Gastos.associate = function(models){
-        Gastos.belongsTo(models.Viaje, {
+    gastos.associate = function(models){
+        gastos.belongsTo(models.viajes, {
             as:'gastos',
             foreignKey:"viajeId"     
         })
     }
 
-    Gastos.associate = function(models){
-        Gastos.belongsTo(models.Usuario, {
+    gastos.associate = function(models){
+        gastos.belongsTo(models.usuarios, {
             as:'gastos',
             foreignKey:"usuarioId"     
         })
     }
 
-    return Gastos
+    return gastos
 }

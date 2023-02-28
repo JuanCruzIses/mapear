@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Actividades";
+    let alias = "actividades";
 
     let cols = {
          actividadId : {
@@ -12,7 +12,7 @@ module.exports = (sequelize, dataTypes) => {
         actividadProvinciaId : {
             type: dataTypes.INTEGER,
             references: {
-                model: 'Provincia',
+                model: 'provincias',
                 key: 'provinciaId'}
         },
         actividadNombre: {
@@ -33,14 +33,14 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: 'updated_at'
     };
 
-    const Actividades = sequelize.define(alias, cols, config)
+    const actividades = sequelize.define(alias, cols, config)
 
-    Actividades.associate = function(models){
-        Actividades.belongsTo(models.Provincia, {
+    actividades.associate = function(models){
+        actividades.belongsTo(models.provincias, {
             as:'lugares',
             foreignKey:"actividadProvinciaId"     
         })
     }
 
-    return Actividades
+    return actividades
 }

@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "ViajeActividades";
+    let alias = "viajeactividades";
 
     let cols = {
         viajeActividadId : {
@@ -11,7 +11,7 @@ module.exports = (sequelize, dataTypes) => {
         actividadId: {
             type: dataTypes.INTEGER,
             references: {
-                model: 'Actividades',
+                model: 'actividades',
                 key: 'actividadId'}
         },
         viajeActividadDia: {
@@ -20,33 +20,33 @@ module.exports = (sequelize, dataTypes) => {
         viajeId: {
             type: dataTypes.INTEGER,
             references: {
-                model: 'Viaje',
+                model: 'viajes',
                 key: 'viajeId'}
         }
     };
 
     let config = {
-        tablename: "viajeActividades",
+        tablename: "viajeactividades",
         timestamps: false, 
         createdAt: 'created_at',
         updatedAt: 'updated_at'
     };
 
-    const ViajeActividades = sequelize.define(alias, cols, config)
+    const viajeactividades = sequelize.define(alias, cols, config)
 
-    ViajeActividades.associate = function(models){
-        ViajeActividades.belongsTo(models.Viaje, {
-            as:'viajeActividades',
+    viajeactividades.associate = function(models){
+        viajeactividades.belongsTo(models.viajes, {
+            as:'viajeactividades',
             foreignKey:"viajeId"     
         })
     }
 
-    ViajeActividades.associate = function(models){
-        ViajeActividades.belongsTo(models.Actividades, {
-            as:'viajeActividades',
+    viajeactividades.associate = function(models){
+        viajeactividades.belongsTo(models.actividades, {
+            as:'viajeactividades',
             foreignKey:"actividadId"     
         })
     }
 
-    return ViajeActividades
+    return viajeactividades
 }

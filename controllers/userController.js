@@ -17,10 +17,10 @@ const userController = {
 
     registerProcess : async (req, res) => {
         let FinalValidationResult = validationResult(req)
-        let userInDB = await db.Usuario.findOne({where: {usuarioEmail : {[Op.like] : req.body.userEmail} } })
+        let userInDB = await db.usuarios.findOne({where: {usuarioEmail : {[Op.like] : req.body.userEmail} } })
 
         if (!FinalValidationResult.errors.length && !userInDB && req.body.userPassword === req.body.confirmUserPassword ) {
-            db.Usuario.create({
+            db.usuarios.create({
                 usuarioNombre : req.body.userName,
                 usuarioEmail : req.body.userEmail,
                 usuarioContrasenia : bcrypt.hashSync(req.body.userPassword, 12), 
@@ -51,7 +51,7 @@ const userController = {
         try{
 
             let userPasswordDB = '';
-            let usuarioEncontrado = await db.Usuario.findOne({where: {usuarioEmail : {[Op.like] : req.body.userLogin} }})
+            let usuarioEncontrado = await db.usuarios.findOne({where: {usuarioEmail : {[Op.like] : req.body.userLogin} }})
             if(usuarioEncontrado){
                 userPasswordDB = usuarioEncontrado.usuarioContrasenia
             }
@@ -79,7 +79,7 @@ const userController = {
     },
 
     profileEdit : async (req, res) => {
-        let userInDB = await db.Usuario.findOne({where: {usuarioEmail : {[Op.like] : locals.usuarioLogeado.usuarioNombre} }})
+        let userInDB = await db.usuarios.findOne({where: {usuarioEmail : {[Op.like] : locals.usuarioLogeado.usuarioNombre} }})
     },
 
     logout : (req, res) => {
@@ -88,8 +88,6 @@ const userController = {
     }, 
     favoriteVista : async (req, res)=>{
         idDeViaje = req.params.id
-
-
         res.render('favorites', {idDeViaje, provincia : req.session.sessionProvincia})
     }
 }
