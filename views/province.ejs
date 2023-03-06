@@ -33,6 +33,7 @@
             <p>Lugares para ver y recorrer, experiencias destacadas y mas</p>
             
             <div class="slider">
+                <% if(lugares.length){ %>
                 <ul class="container-province-cards">
                     <% lugares.forEach(lugar =>{ %>
                         <li class="container-cards">
@@ -45,6 +46,9 @@
                     <div class="next"><i class="fa-solid fa-circle-arrow-right"></i></div>
                     <div class="prev"><i class="fa-solid fa-circle-arrow-left"></i></div>
                 </div>
+                <%}else { %>
+                        <h5>Aun no hay actividades agregadas</h5>
+                <% } %>
             </div>
     </main>
     <%- include('./partials/tabBar') %> 
